@@ -26,17 +26,17 @@ func _physics_process(delta):
 	else:
 		pass
 
-func _process(delta: float) -> void:
-	life.text = ("Lives:") + str(lives)
+func _process(delta: float) -> void: #display lives on label
+	life.text = ("Lives: ") + str(lives)
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if lives > 0:
-		lives -= 1
+		lives -= 1 #taking away a life on collision with enemies
 	else:
-		game_over()
+		game_over() #ending game if no more lives
 		
 	pass # Replace with function body.
 	
 func game_over():
-	move = false
+	move = false #handling game over; can't move and UI is displayed
 	end.visible = true
