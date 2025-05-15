@@ -4,21 +4,30 @@
 [ext_resource type="Texture2D" uid="uid://c8a5nyqqc1ofn" path="res://32x32white.png" id="1_y16gg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y16gg"]
-size = Vector2(31, 31)
+size = Vector2(32.25, 32.25)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="Enemy" type="RigidBody2D" parent="." groups=["enemy"]]
+input_pickable = true
 mass = 0.001
 gravity_scale = 0.0
 lock_rotation = true
-linear_velocity = Vector2(-100, 0)
+linear_velocity = Vector2(-200, 0)
 script = ExtResource("1_q4yn1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_y16gg")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
 modulate = Color(0.869495, 0, 0.062676, 1)
 texture = ExtResource("1_y16gg")
+
+[node name="Area2D" type="Area2D" parent="Enemy" groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Area2D"]
+position = Vector2(-0.125, -0.125)
+shape = SubResource("RectangleShape2D_y16gg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+position = Vector2(0.25, 0.25)
+shape = SubResource("RectangleShape2D_y16gg")
+
+[connection signal="area_entered" from="Enemy/Area2D" to="Enemy" method="_on_area_2d_area_entered"]

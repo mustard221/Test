@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnunfls3gcyly"]
+[gd_scene load_steps=8 format=3 uid="uid://cnunfls3gcyly"]
 
 [ext_resource type="Script" uid="uid://dkojkbt3b8ord" path="res://scripts/player_movement.gd" id="1_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://c8a5nyqqc1ofn" path="res://32x32white.png" id="2_sugp2"]
@@ -12,18 +12,14 @@
 [sub_resource type="LabelSettings" id="LabelSettings_0wfyh"]
 font_size = 30
 
-[sub_resource type="LabelSettings" id="LabelSettings_jyhfs"]
-font_size = 40
-
 [node name="Node2D" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(141, -12)
 
-[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("life") groups=["player"]]
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 input_pickable = true
 script = ExtResource("1_0wfyh")
-life = NodePath("../Label")
 enemy = ExtResource("4_jyhfs")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
@@ -96,21 +92,6 @@ offset_right = -95.0
 offset_bottom = -184.0
 text = "Enemies: 0"
 label_settings = SubResource("LabelSettings_0wfyh")
-
-[node name="Panel" type="Panel" parent="."]
-visible = false
-offset_left = -435.0
-offset_top = -340.0
-offset_right = 715.0
-offset_bottom = 318.0
-
-[node name="Label3" type="Label" parent="Panel"]
-offset_left = 432.0
-offset_top = 311.0
-offset_right = 662.0
-offset_bottom = 366.0
-text = "GAME OVER"
-label_settings = SubResource("LabelSettings_jyhfs")
 
 [connection signal="timeout" from="Player/Spawner4/Timer" to="Player/Spawner4" method="_on_timer_timeout"]
 [connection signal="timeout" from="Player/Spawner3/Timer" to="Player/Spawner3" method="_on_timer_timeout"]
