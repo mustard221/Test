@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://c8a5nyqqc1ofn" path="res://32x32white.png" id="1_y16gg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y16gg"]
-size = Vector2(32.25, 32.25)
+size = Vector2(31.5, 31.5)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Enemy" type="RigidBody2D" parent="." groups=["enemy"]]
+[node name="Enemy" type="RigidBody2D" parent="."]
 input_pickable = true
 mass = 0.001
 gravity_scale = 0.0
@@ -20,10 +20,10 @@ script = ExtResource("1_q4yn1")
 modulate = Color(0.869495, 0, 0.062676, 1)
 texture = ExtResource("1_y16gg")
 
-[node name="Area2D" type="Area2D" parent="Enemy" groups=["enemy"]]
+[node name="Area2D" type="Area2D" parent="Enemy"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Area2D"]
-position = Vector2(-0.125, -0.125)
+position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_y16gg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]

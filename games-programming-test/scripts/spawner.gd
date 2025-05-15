@@ -4,6 +4,8 @@ extends Node2D
 @export var timer: Timer
 @export var enemies: Label
 
+@onready var s: PackedScene
+
 var enemies_amount = 0
 
 func _on_timer_timeout() -> void:
@@ -28,3 +30,6 @@ func _on_timer_timeout() -> void:
 	##tween.tween_property(spawn, )
 	pass
 	pass # Replace with function body.
+	
+func _dead() -> void:
+	enemies_amount = enemies_amount - 1
