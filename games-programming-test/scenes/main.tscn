@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnunfls3gcyly"]
+
+[ext_resource type="Script" uid="uid://dkojkbt3b8ord" path="res://scripts/character_body_2d.gd" id="1_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://c8a5nyqqc1ofn" path="res://32x32white.png" id="2_sugp2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhfs"]
+size = Vector2(32, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0wfyh"]
+font_size = 30
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(281, 0)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_0wfyh")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("2_sugp2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_jyhfs")
+
+[node name="Spawner" type="Marker2D" parent="CharacterBody2D"]
+position = Vector2(320, 0)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -267.0
+offset_top = -285.0
+offset_right = -159.0
+offset_bottom = -230.0
+text = "Lives:"
+label_settings = SubResource("LabelSettings_0wfyh")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -269.0
+offset_top = -239.0
+offset_right = -95.0
+offset_bottom = -184.0
+text = "Enemies:"
+label_settings = SubResource("LabelSettings_0wfyh")
