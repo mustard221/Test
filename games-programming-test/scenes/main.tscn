@@ -25,10 +25,29 @@ texture = ExtResource("2_sugp2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_jyhfs")
 
-[node name="Spawner" type="Marker2D" parent="CharacterBody2D"]
-position = Vector2(231, -1)
+[node name="Spawner3" type="Marker2D" parent="CharacterBody2D"]
+position = Vector2(413, -10)
 script = ExtResource("3_sugp2")
 enemy_scene = ExtResource("4_jyhfs")
+
+[node name="Timer" type="Timer" parent="CharacterBody2D/Spawner3"]
+autostart = true
+
+[node name="Spawner2" type="Marker2D" parent="CharacterBody2D"]
+position = Vector2(379, -214)
+script = ExtResource("3_sugp2")
+enemy_scene = ExtResource("4_jyhfs")
+
+[node name="Timer" type="Timer" parent="CharacterBody2D/Spawner2"]
+autostart = true
+
+[node name="Spawner" type="Marker2D" parent="CharacterBody2D"]
+position = Vector2(536, 224)
+script = ExtResource("3_sugp2")
+enemy_scene = ExtResource("4_jyhfs")
+
+[node name="Timer" type="Timer" parent="CharacterBody2D/Spawner"]
+autostart = true
 
 [node name="Label" type="Label" parent="."]
 offset_left = -267.0
@@ -45,3 +64,7 @@ offset_right = -95.0
 offset_bottom = -184.0
 text = "Enemies:"
 label_settings = SubResource("LabelSettings_0wfyh")
+
+[connection signal="timeout" from="CharacterBody2D/Spawner3/Timer" to="CharacterBody2D/Spawner3" method="_on_timer_timeout"]
+[connection signal="timeout" from="CharacterBody2D/Spawner2/Timer" to="CharacterBody2D/Spawner2" method="_on_timer_timeout"]
+[connection signal="timeout" from="CharacterBody2D/Spawner/Timer" to="CharacterBody2D/Spawner" method="_on_timer_timeout"]
