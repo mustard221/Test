@@ -1,2 +1,2 @@
 # Test
-Games Programming Module Exam
+Game Programming Module Exam
